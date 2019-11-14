@@ -37,47 +37,39 @@ const minutosVideo6
 const segundosVideo6
 */
 
-const totalHoras = document.querySelectorAll(".horas");
-const totalMinutos = document.querySelectorAll(".minutos");
-const totalSegundos = document.querySelectorAll(".segundos");
 
 const $calcularTiempoTotal = document.querySelector("#calcular-tiempo-total")
-const horasFinal = document.querySelector("#horas-totales")
-const minutosFinal = document.querySelector("#minutos-totales")
-const segundosFinal = document.querySelector("#segundos-totales");
-
-console.log(totalHoras);    
-
-let horasFuncion = 0
-
-
-for (let i = 0; i < totalHoras.length; i++) {
-        console.log(totalHoras[i])
-        horasFuncion = horasFuncion + totalHoras[i]
-    }
-
-console.log(horasFuncion.value)
-
-console.log(totalHoras.length.value);
-
 
 $calcularTiempoTotal.onclick = function (){
 
-    const calcularHorasTotales = horasFinal.value + minutosFinal.value + segundosFinal.value
-    console.log(calcularHorasTotales);
+const totalHoras = Number(document.querySelectorAll(".horas").value);
+const totalMinutos = Number(document.querySelectorAll(".minutos").value);
+const totalSegundos = Number(document.querySelectorAll(".segundos").value);
+
+    for (let i = 0; i < totalHoras.length; i++) {
+        console.log(totalHoras[i])
+    }
+
+    for (let i = 0; i < totalMinutos.length; i++) {
+        console.log(totalMinutos[i])
+    }
+
+    for (let i = 0; i < totalSegundos.length; i++) {
+        console.log(totalSegundos[i])
+        
+    }
+
+const horasFinal = totalHoras
+const minutosFinal = totalMinutos
+const segundosFinal = totalSegundos
+
+document.querySelector("#horas-totales").value = horasFinal
+document.querySelector("#minutos-totales").value = minutosFinal
+document.querySelector("#segundos-totales").value = segundosFinal
+
+console.log(horasFinal);
+console.log(minutosFinal);
+console.log(segundosFinal);
 
      return false
     }
-
-//acá sale resultado del clic en botón. Debo hacer entrar los números acá
-//porque aún sale undefined. Debo hacer que #horas sea igual a números ingresados.     
-// y después, mandar el resultado de esos números al cuadro de texto.
-
-//ver cómo Fabricio hizo el ejercicio de salario anual y mensual en un disabled.
-
-
-// La idea es crear una función dentro de la función de calcular total, que sume las horas. Podría hacer una de estas
-// para horas, minutos y segundos. Es decir, 3 funciones parent y child. Ya con eso, las node lists y el bucle de suma
-// podría empezar a hacer las cuentas. Me falta crear los espacios en el html de "X horas, X minutos y X segundos" 
-
-//C:/Users/Fede/Desktop/Programacion/introduccion-a-js-master/tareas/Ejercicios/ejercicio-videos.html
