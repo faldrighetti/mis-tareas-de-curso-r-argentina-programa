@@ -12,32 +12,6 @@
 // Video 5: 2:40:48
 // Video 6: 1:14:18
 
-/*const horasVideo1 = documen
-const minutosVideo1
-const segundosVideo1
-
-const horasVideo2
-const minutosVideo2
-const segundosVideo2
-
-const horasVideo3
-const minutosVideo3
-const segundosVideo3
-
-const horasVideo4
-const minutosVideo4
-const segundosVideo4
-
-const horasVideo5
-const minutosVideo5
-const segundosVideo5
-
-const horasVideo6
-const minutosVideo6
-const segundosVideo6
-*/
-
-
 const $calcularTiempoTotal = document.querySelector("#calcular-tiempo-total")
 
 $calcularTiempoTotal.onclick = function (){
@@ -73,3 +47,10 @@ console.log(segundosFinal);
 
      return false
     }
+
+//ver cómo Fabricio hizo el ejercicio de salario anual y mensual en un disabled.
+
+//Restantes: ingresar números en el sistema, definir sumas, definir restos (que no quede en 7 horas, 187', 186");
+
+
+//C:/Users/Fede/Desktop/Programacion/introduccion-a-js-master/tareas/Ejercicios/ejercicio-videos.html
