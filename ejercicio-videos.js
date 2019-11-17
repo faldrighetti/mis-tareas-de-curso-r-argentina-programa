@@ -13,42 +13,55 @@
 // Video 6: 1:14:18
 
 const $calcularTiempoTotal = document.querySelector("#calcular-tiempo-total")
+const $totalHoras = document.querySelector("#horas-totales")
+const $totalMinutos = document.querySelector("#minutos-totales")
+const $totalSegundos = document.querySelector("#segundos-totales")
+
 
 $calcularTiempoTotal.onclick = function (){
 
-const totalHoras = Number(document.querySelectorAll(".horas").value);
-const totalMinutos = Number(document.querySelectorAll(".minutos").value);
-const totalSegundos = Number(document.querySelectorAll(".segundos").value);
+    const duracionHoras = document.querySelectorAll(".horas")
+    const duracionMinutos = document.querySelectorAll(".minutos")
+    const duracionSegundos = document.querySelectorAll(".segundos")
 
-    for (let i = 0; i < totalHoras.length; i++) {
-        console.log(totalHoras[i])
+    let contadorHoras = 0
+    let contadorMinutos = 0
+    let contadorSegundos = 0
+    
+    for (i=0; i < duracionHoras.length; i++){
+        contadorHoras += Number(duracionHoras[i].value)
     }
 
-    for (let i = 0; i < totalMinutos.length; i++) {
-        console.log(totalMinutos[i])
+    for (i = 0; i < duracionSegundos.length; i++) {
+        contadorSegundos += Number(duracionSegundos[i].value)
+        if (contadorSegundos > 60) {
+            contadorSegundos -= 60
+            contadorMinutos = contadorMinutos + 1
+        }
     }
 
-    for (let i = 0; i < totalSegundos.length; i++) {
-        console.log(totalSegundos[i])
-        
+    for (i = 0; i < duracionMinutos.length; i++) {
+        contadorMinutos += Number(duracionMinutos[i].value)
+        if (contadorMinutos > 60) {
+            contadorMinutos -= 60
+            contadorHoras = contadorHoras + 1
+        }
     }
 
-const horasFinal = totalHoras
-const minutosFinal = totalMinutos
-const segundosFinal = totalSegundos
 
-document.querySelector("#horas-totales").value = horasFinal
-document.querySelector("#minutos-totales").value = minutosFinal
-document.querySelector("#segundos-totales").value = segundosFinal
-
-console.log(horasFinal);
-console.log(minutosFinal);
-console.log(segundosFinal);
+document.querySelector("#horas-totales").value = contadorHoras
+document.querySelector("#minutos-totales").value = contadorMinutos
+document.querySelector("#segundos-totales").value = contadorSegundos
 
      return false
     }
 
 //ver cómo Fabricio hizo el ejercicio de salario anual y mensual en un disabled.
+
+//EXPLICACIÓN: Básicamente todo consistía en hacer bucles con horas, minutos y segundos. Extraer la duración con el 
+// querySelectorAll y las clases, para luego declarar lets de contadores iniciando en 0 y sumarlos. Hacer un bucle con
+// elementos de una class recorre dicha class y extrae sus elementos, desde la posición 0 (de ahí el let = 0) hasta 
+// el final del length.
 
 //Restantes: ingresar números en el sistema, definir sumas, definir restos (que no quede en 7 horas, 187', 186");
 
