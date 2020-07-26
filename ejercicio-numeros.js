@@ -8,59 +8,71 @@
 // 4. obtener el número que más se repite y mostrarlo en un <em> pre-creado con el texto "El número más frecuente es..."
 // <em> es poner en itálica
 
-
-const contenidoLi = document.querySelectorAll("li")
+const contenidoLi = document.querySelectorAll("li");
 let suma = 0
+const arrayNumeros = []
 
-const array = []
-
-for (let i=0; i < contenidoLi.length; i++){
-   array.push(contenidoLi[i].innerText)
+for (let i = 0; i < contenidoLi.length; i++){
+    arrayNumeros.push(contenidoLi[i].innerText)
 }
 
-console.log(array)
+console.log(arrayNumeros)
 
 //Se sacan los números de contenidoLi (la lista de números) y con eso se le hace un push al array vacío antes declarado
 
-for (let i = 0; i < array.length; i++) {
-    suma += Number(array[i])    
+
+for (let i = 0; i < arrayNumeros.length; i++){
+    suma +=  Number(arrayNumeros[i])
 }
+
 
 console.log(suma) // esto da 180, la suma realizada (vamos carajo)
 
-const promedio = suma / array.length;
+const promedio = suma / arrayNumeros.length;
 console.log(promedio); // da 18 (el promedio)
 
 const agregadoPromedio = document.querySelector("#texto-promedio")
-console.log(agregadoPromedio.innerText)
 agregadoPromedio.innerText = agregadoPromedio.innerText + promedio;
 
+console.log(agregadoPromedio.innerText)
 
+const numeroAlto = Math.max.apply(null, arrayNumeros);
+console.log(numeroAlto);
 
-for (let i = 0; i < array.length; i++) {
-    let menor = 0
-    if (menor < array [i]) {
-        menor = array [i];
+const numeroBajo = Math.min.apply(null, arrayNumeros);
+console.log(numeroBajo);
+
+let agregadoMayor = document.querySelector ("#texto-mayor")
+agregadoMayor.textContent = agregadoMayor.textContent +  numeroAlto;
+
+let agregadoMenor = document.querySelector ("#texto-menor")
+agregadoMenor.textContent = agregadoMenor.textContent + numeroBajo;
+
+var map = {};
+var mostFrequentElement = arrayNumeros[0];
+function findMostFrequent(){
+    for(var i = 0; i<arrayNumeros.length; i++){
+        if(!map[arrayNumeros[i]]){
+            map[arrayNumeros[i]]=1;
+        }else{
+            ++map[arrayNumeros[i]];
+            if(map[arrayNumeros[i]]>map[mostFrequentElement]){
+                mostFrequentElement = arrayNumeros[i];
+            }
+        }
     }
- //   console.log(menor)
+    console.log(mostFrequentElement);
 }
 
-for (let i = 0; i < array.length; i++) {
-    let frec = 0
-    if (frec < array [i]) {
-        frec = array [i];
-    }
-    console.log(frec)
-}
+findMostFrequent();
+
+//Esto de alguna forma devuelve el número más frecuente del array. La variable map es una estructura de datos.
+
+let agregadoFrecuente = document.querySelector ("#texto-frecuente")
+agregadoFrecuente.textContent = agregadoFrecuente.textContent + mostFrequentElement;
 
 
 
-
-function numeroFrecuente (array) {
-    
-
-    return console.log(numeroFrecuente(array));
-}
 
 
 // declarar lets de contadores iniciando en 0 y sumarlos. Hacer un bucle con elementos de una class recorre
