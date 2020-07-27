@@ -27,20 +27,12 @@ $calcularTiempoTotal.onclick = function (){
     let contadorHoras = 0
     let contadorMinutos = 0
     let contadorSegundos = 0
-    
-    for (i=0; i < duracionHoras.length; i++){
+
+    for (i = 0; i < duracionHoras.length; i++){
         contadorHoras += Number(duracionHoras[i].value)
     }
 
-    for (i = 0; i < duracionSegundos.length; i++) {
-        contadorSegundos += Number(duracionSegundos[i].value)
-        if (contadorSegundos > 60) {
-            contadorSegundos -= 60
-            contadorMinutos = contadorMinutos + 1
-        }
-    }
-
-    for (i = 0; i < duracionMinutos.length; i++) {
+    for (i = 0; i < duracionMinutos.length; i++){
         contadorMinutos += Number(duracionMinutos[i].value)
         if (contadorMinutos > 60) {
             contadorMinutos -= 60
@@ -48,22 +40,18 @@ $calcularTiempoTotal.onclick = function (){
         }
     }
 
+    for (i = 0; i < duracionSegundos.length; i++){
+        contadorSegundos += Number(duracionSegundos[i].value)
 
-document.querySelector("#horas-totales").value = contadorHoras
-document.querySelector("#minutos-totales").value = contadorMinutos
-document.querySelector("#segundos-totales").value = contadorSegundos
-
-     return false
+        if (contadorSegundos > 60) {
+            contadorSegundos -= 60
+            contadorMinutos = contadorMinutos + 1
+        }
     }
 
-//ver cómo Fabricio hizo el ejercicio de salario anual y mensual en un disabled.
+    document.querySelector("#horas-totales").value = contadorHoras
+    document.querySelector("#minutos-totales").value = contadorMinutos
+    document.querySelector("#segundos-totales").value = contadorSegundos
 
-//EXPLICACIÓN: Básicamente todo consistía en hacer bucles con horas, minutos y segundos. Extraer la duración con el 
-// querySelectorAll y las clases, para luego declarar lets de contadores iniciando en 0 y sumarlos. Hacer un bucle con
-// elementos de una class recorre dicha class y extrae sus elementos, desde la posición 0 (de ahí el let = 0) hasta 
-// el final del length.
-
-//Restantes: ingresar números en el sistema, definir sumas, definir restos (que no quede en 7 horas, 187', 186");
-
-
-//C:/Users/Fede/Desktop/Programacion/introduccion-a-js-master/tareas/Ejercicios/ejercicio-videos.html
+    return false;
+}

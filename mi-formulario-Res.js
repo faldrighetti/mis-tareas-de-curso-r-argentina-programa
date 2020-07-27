@@ -62,4 +62,6 @@ nuevoParrafo.appendChild(textoParrafo);
 nodoPagina.appendChild(nuevoParrafo);
 */
 
+//Alternativa: hacer una function Juntar que junte los .value de los inputs y poner esa función en la const texto.
+
 // file:///C:/Users/Fede/Desktop/Programacion/introduccion-a-js-master/tareas/clase-5/mi-formulario-f.html?
