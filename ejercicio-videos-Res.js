@@ -48,7 +48,6 @@ $calcularTiempoTotal.onclick = function (){
         }
     }
 
-
 document.querySelector("#horas-totales").value = contadorHoras
 document.querySelector("#minutos-totales").value = contadorMinutos
 document.querySelector("#segundos-totales").value = contadorSegundos
@@ -56,9 +55,7 @@ document.querySelector("#segundos-totales").value = contadorSegundos
      return false
     }
 
-//ver cómo Fabricio hizo el ejercicio de salario anual y mensual en un disabled.
-
-//EXPLICACIÓN: Básicamente todo consistía en hacer bucles con horas, minutos y segundos. Extraer la duración con el 
+//EXPLICACIÓN: Básicamente todo consiste en hacer bucles con horas, minutos y segundos. Extraer la duración con el 
 // querySelectorAll y las clases, para luego declarar lets de contadores iniciando en 0 y sumarlos. Hacer un bucle con
 // elementos de una class recorre dicha class y extrae sus elementos, desde la posición 0 (de ahí el let = 0) hasta 
 // el final del length.

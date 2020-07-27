@@ -46,3 +46,11 @@ $calcularSalarioMensual.onclick = function(){
 // 2. obtener el número más pequeño y mostrarlo en un <em> pre-creado con el texto "El número más pequeño es..."
 // 3. obtener el número más grande y mostrarlo en un <em> pre-creado con el texto "El número más grande es..."
 // 4. obtener el número que más se repite y mostrarlo en un <em> pre-creado con el texto "El número más frecuente es..."
+
+//TAREA: En otro archivo distinto,
+// Empezar preguntando cuánta gente hay en el grupo familiar.
+// Crear tantos inputs + labels como gente haya para completar la edad de cada integrante.
+// Al hacer click en "Calcular", mostrar en un elemento pre-existente la mayor edad, la menor edad y
+// el promedio del grupo familiar.
+// BONUS: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, borrando los inputs
+// ya creados (investigar cómo en MDN).
