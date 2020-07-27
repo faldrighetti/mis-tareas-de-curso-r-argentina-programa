@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Tarea grupo familiar</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="maine.css">
+</head>
+<body>
+
+<form>
+    <label>Ingrese la cantidad de integrantes</label> <input type="number" id="cantidad-integrantes">
+    <button type="submit" id="siguiente-paso">Siguiente</button>
+    <br>
+
+
+  <!--
+    Ahora declaro un div vacío de integrantes, donde van a ir Integrante 1, Integrante 2, etc.
+    -->
+    <div id="integrantes">
+
+    </div>
+
+    <br>
+    
+    <button type="button" id="calcular" class="oculto">Calcular</button>
+
+  <!--
+    Ahora declaro un div id analisis, donde voy a poner todos los resultados, también class oculto
+    -->
+
+    <div id="analisis" class="oculto"> 
+        <p>La edad mayor es: <strong id="mayor-edad"></strong></p>
+        <p>La edad menor es: <strong id="menor-edad"></strong></p>
+        <p>El promedio de edad es:<strong id="edad-promedio"></strong></p>
+
+    </div>
+
+
+    <button type="reset" id="resetear">Limpiar</button>
+
+</form>
+
+  <!--
+    Ahora hay dos archivos de js en el script. Uno de cálculos y otro de manipulación de html
+    -->
+
+    <script src='calculos-grupo-familiar.js'></script>
+    <script src='tarea-clase-6.js'></script>
+</body>
+</html>

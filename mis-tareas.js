@@ -29,7 +29,6 @@ $calcularSalarioMensual.onclick = function(){
 // Y va a cambiar el <h1> para decir "Bienvenido, nombreDeUsuario"!
 
 
-
 //TAREA: En otro archivo distinto,
 // Por cada clase de r/argentina programa existente, vamos a pedir:
 // horas, minutos y segundos de cada video. Ej. Si un video dura
@@ -46,6 +45,7 @@ $calcularSalarioMensual.onclick = function(){
 // 2. obtener el número más pequeño y mostrarlo en un <em> pre-creado con el texto "El número más pequeño es..."
 // 3. obtener el número más grande y mostrarlo en un <em> pre-creado con el texto "El número más grande es..."
 // 4. obtener el número que más se repite y mostrarlo en un <em> pre-creado con el texto "El número más frecuente es..."
+
 
 //TAREA: En otro archivo distinto,
 // Empezar preguntando cuánta gente hay en el grupo familiar.
