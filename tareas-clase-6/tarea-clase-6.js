@@ -123,8 +123,8 @@ document.querySelector(`#${tipo}-edad`).textContent = valor;
 function obtenerEdadesIntegrantes(){
     const $integrantes = document.querySelectorAll (".integrante input");
     const edades = []
-    for ( i= 0; i < $integrantes.length; i++){
-        edades.push(Number(integrantes[i].value))
+    for (let i= 0; i < $integrantes.length; i++){
+        edades.push(Number($integrantes[i].value))
     }
     return edades;
 }
