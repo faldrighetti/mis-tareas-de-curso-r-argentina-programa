@@ -37,6 +37,8 @@ document.querySelector("#calcular").onclick = function(event){
 // El botón Calcular tiene que obtener las edades de los integrantes, obtener la mayor, la menor y el promedio,
 // y mostrarlos. Y al final de todo, tiene que mostrar todos esos resultados. 
 
+document.querySelector("#resetear").onclick = resetear;
+
 function borrarIntegrantesAnteriores(){
     const $integrantes = document.querySelectorAll(".integrante")
     for (let i = 0; i < $integrantes.length; i++){
@@ -47,8 +49,6 @@ function borrarIntegrantesAnteriores(){
 // Esta función toma los integrantes del ALL de la class .integrante (declarada en la function crearIntegrante),
 // con el bucle encuentra los elementos de esa NodeList y con el remove() los elimina.
 
-
-document.querySelector("#resetear").onclick = resetear;
 
 function crearIntegrantes(cantidadIntegrantes){
 
