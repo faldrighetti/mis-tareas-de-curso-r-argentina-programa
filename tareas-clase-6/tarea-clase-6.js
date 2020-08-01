@@ -62,7 +62,7 @@ function crearIntegrantes(cantidadIntegrantes){
 }
 
 // La función toma cuántos integrantes hay. Si la cantidad es mayor que 0, muestra el botón de cálculo. Y sino,
-// resetea el formulario.
+// resetea el formulario. Recordar que cantidadIntegrantes es el Number del .value del input "#cantidad-integrantes".
 
 function crearIntegrante(indice){
     const $div = document.createElement("div");
