@@ -13,11 +13,8 @@ function obtenerMayorNumero(numeros){
             mayorNumero = numeros[i];
         }
     }
-
     return mayorNumero;
 }
-
-
 
 function obtenerMenorNumero(numeros){
     let menorNumero = numeros [0];
@@ -26,15 +23,16 @@ function obtenerMenorNumero(numeros){
             menorNumero = numeros[i]
         }
     }
-
     return menorNumero;
 }
 
 function obtenerPromedio(numeros){
-    let acumulador = 0
+    let acumulador = 0;
     for (let i = 0; i < numeros.length; i++){
         acumulador += numeros[i];
     }
-
     return (acumulador / numeros.length).toFixed(2);
 }
+
+// "acumulador += numeros[i]" significa "acumulador = acumulador + numeros[i]"
+//El .toFixed(2) convierte el número en string, redondeado a los decimales en el paréntesis (2).
