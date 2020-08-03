@@ -57,8 +57,8 @@ function calcularSalarios ( ){
     }
     console.log(todosLosSalarios)
 
-    document.querySelector("#salario-mayor").textContent = document.querySelector("#salario-mayor").textContent + " " + Math.max(Number(todosLosSalarios))
-    document.querySelector("#salario-menor").textContent = document.querySelector("#salario-menor").textContent + " " + Math.min(Number(todosLosSalarios))
+    document.querySelector("#salario-mayor").textContent = document.querySelector("#salario-mayor").textContent + " " + Math.max(todosLosSalarios)
+    document.querySelector("#salario-menor").textContent = document.querySelector("#salario-menor").textContent + " " + Math.min(todosLosSalarios)
 
 }
 
