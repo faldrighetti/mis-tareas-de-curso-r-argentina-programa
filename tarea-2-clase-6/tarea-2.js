@@ -47,18 +47,21 @@ $quitaEmpleado.onclick = function(){
 function calcularSalarios ( ){
 
     const todosLosEmpleados = document.querySelectorAll(".empleado input")
-    let todosLosSalarios = []
+    const todosLosSalarios = []
 
     for (let i = 0; i < todosLosEmpleados.length; i++){
         if (todosLosEmpleados[i].value !== ""){
-            todosLosSalarios.push = (Number(todosLosEmpleados[i].value))
+            todosLosSalarios.push(Number(todosLosEmpleados[i].value))
         }
        
     }
     console.log(todosLosSalarios)
 
-    document.querySelector("#salario-mayor").textContent = document.querySelector("#salario-mayor").textContent + " " + Math.max(todosLosSalarios)
-    document.querySelector("#salario-menor").textContent = document.querySelector("#salario-menor").textContent + " " + Math.min(todosLosSalarios)
+    document.querySelector("#salario-mayor").textContent += " " + Math.max(...todosLosSalarios)
+    document.querySelector("#salario-menor").textContent += " " + Math.min(...todosLosSalarios)
+
+// usé el spread operator ... que adapta a las funciones Math, que funcionan bien con series de números pero
+// no con arrays precisamente.
 
 }
 
