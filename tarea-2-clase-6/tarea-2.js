@@ -4,7 +4,7 @@
 
 
 // Botón principal: agregue empleados (agrega campo de texto type number en el que se ingresa su salario anual)
-// hacer un form y declararle inputs con js. Los labels serían Empleado 1, Empleado 2, etc.
+// hacer un form y declararle inputs con js
 // Una función que cree un input y un label cada vez que haga clic en el button agregar
 // BONUS: hacer un if (valor !== '')
 
