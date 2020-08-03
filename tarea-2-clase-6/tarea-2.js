@@ -33,11 +33,15 @@ function crearEmpleado(){
 
 }
 
+// crea un input y label por cada clic
+
 const $quitaEmpleado = document.querySelector("#quitar-empleado");
 
 $quitaEmpleado.onclick = function(){
     document.querySelector(".empleado").remove();
 }
+
+// quita un input y label por cada clic (el primero)
 
 
 function calcularSalarios ( ){
@@ -56,28 +60,13 @@ function calcularSalarios ( ){
     document.querySelector("#salario-mayor").textContent = document.querySelector("#salario-mayor").textContent + " " + Math.max(Number(todosLosSalarios))
     document.querySelector("#salario-menor").textContent = document.querySelector("#salario-menor").textContent + " " + Math.min(Number(todosLosSalarios))
 
-    //salarioMasAlto = salarioMayor();
-    //salarioMasBajo = salarioMenor();
-
-    return false;
-
 }
-
-/*    for (let i = 0; i < empleados.length; i++) {
-
-    if (Boolean(document.querySelector(".empleado input").value) !== 0) {
-        cantidadEmpleados += empleados[i]
-
-} else {continue}
-}
-*/
 
 
 const $calcular = document.querySelector("#calcular")
 
 calcular.onclick = function (){
     calcularSalarios();
-
     return false;
 }
 
