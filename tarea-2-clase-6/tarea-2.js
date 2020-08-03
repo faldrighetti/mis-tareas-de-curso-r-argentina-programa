@@ -40,29 +40,44 @@ $quitaEmpleado.onclick = function(){
 }
 
 
+function calcularSalarios ( ){
 
+    const todosLosEmpleados = document.querySelectorAll(".empleado input")
+    let todosLosSalarios = []
 
+    for (let i = 0; i < todosLosEmpleados.length; i++){
+        if (todosLosEmpleados[i].value !== ""){
+            todosLosSalarios.push = (Number(todosLosEmpleados[i].value))
+        }
+       
+    }
+    console.log(todosLosSalarios)
 
+    document.querySelector("#salario-mayor").textContent = document.querySelector("#salario-mayor").textContent + " " + Math.max(Number(todosLosSalarios))
+    document.querySelector("#salario-menor").textContent = document.querySelector("#salario-menor").textContent + " " + Math.min(Number(todosLosSalarios))
 
+    //salarioMasAlto = salarioMayor();
+    //salarioMasBajo = salarioMenor();
 
-const empleados =  Number(document.querySelector("input").value)
+    return false;
 
-function calcularSalarios (){
-    let cantidadEmpleados = 0
-    for (let i = 0; i < empleados.length; i++) {
-
-        if (Boolean(document.querySelector("input").value) === true) {
-             cantidadEmpleados += empleados[i]
-
-    } else {continue}
 }
-}
 
+/*    for (let i = 0; i < empleados.length; i++) {
+
+    if (Boolean(document.querySelector(".empleado input").value) !== 0) {
+        cantidadEmpleados += empleados[i]
+
+} else {continue}
+}
+*/
 
 
 const $calcular = document.querySelector("#calcular")
 
 calcular.onclick = function (){
-    calcularSalarios
+    calcularSalarios();
+
+    return false;
 }
 
