@@ -18,14 +18,23 @@ al event handler “onclick”, agréguentle un return false; al final de la fun
 // en una caja de texto deshabilitada. --> <input type="text" disabled id="salario-mensual"/>
 
 
-const $botonCalculo = document.querySelector('#boton-calcular')
+const $botonCalculoAnualMensual = document.querySelector('#boton-calcular')
+const $botonCalculoMensualAnual = document.querySelector('#boton-calcular-2')
 
-$botonCalculo.onclick = function(){
+const MESES_EN_ANIO = 12
+
+$botonCalculoAnualMensual.onclick = function(){
     let salarioAnual = Number(document.querySelector('#salario-anual').value)
-    let salarioMensual = salarioAnual / 12
+    let salarioMensual = salarioAnual / MESES_EN_ANIO
     
-    console.log(salarioMensual)
     document.querySelector('#salario-mensual').value = salarioMensual
     return false;
 }
 
+$botonCalculoMensualAnual.onclick = function(){
+    let salarioMensual = Number(document.querySelector('#salario-mensual-2').value)
+    let salarioAnual = salarioMensual * MESES_EN_ANIO
+
+    document.querySelector('#salario-anual-2').value = salarioAnual
+    return false;
+}
