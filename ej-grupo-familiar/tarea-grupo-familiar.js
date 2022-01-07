@@ -1,8 +1,10 @@
 /*
 TAREA: Empezar preguntando cuánta gente hay en el grupo familiar.
 Crear tantos inputs+labels como gente haya para completar la edad de cada integrante.
-Al hacer click en "calcular", mostrar en un elemento pre-existente la mayor edad, la menor edad y el promedio del grupo familiar.
-Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, borrando los inputs ya creados (investigar cómo en MDN).
+Al hacer click en "calcular", mostrar en un elemento pre-existente la mayor edad, la menor edad y el promedio del grupo 
+familiar.
+Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, borrando los inputs ya creados 
+(investigar cómo en MDN).
 */
 
 const $botonProcesar = document.querySelector('#procesar')
@@ -111,10 +113,6 @@ $botonCalcular.onclick = function(){
     let edad_mayor = document.querySelector('#edad-mayor')
     let edad_menor = document.querySelector('#edad-menor')
     let edad_promedio = document.querySelector('#edad-promedio')
-    
-    console.log(mayor())
-    console.log(menor())
-    console.log(promedio())
 
     edad_mayor.textContent = mayor()
     edad_menor.textContent = menor()
