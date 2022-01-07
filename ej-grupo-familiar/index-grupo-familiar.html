@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Ejercicio grupo familiar</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+
+</head>
+<body>
+
+    <form>
+    <label>¿Cuántos integrantes tiene tu grupo familiar? </label><input type="number" id='pregunta'>
+    <button type="button" id='procesar'>Procesar</button>
+    <button type="button" id="resetear">Resetear todo</button>
+    </form>
+    <br>
+
+    <div id="grupo-familiar"></div>
+
+    <br>
+
+    <div id = resultado> La mayor edad es: <strong id="edad-mayor"></strong>
+        <br> 
+        La menor edad es: <strong id="edad-menor"></strong>
+        <br>
+        La edad promedio es: <strong id="edad-promedio"></strong>
+    </div>
+
+    <script src='tarea-grupo-familiar.js'></script>
+</body>
+</html>
