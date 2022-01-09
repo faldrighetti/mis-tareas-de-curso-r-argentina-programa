@@ -7,9 +7,7 @@ salario anual promedio y salario mensual promedio.
 Punto bonus: si hay inputs vacíos, ignorarlos en el cálculo (no contarlos como 0).
 */
 
-// BONUS: dentro del for: if integrantes.value = '' {continue} O if integrantes.value !== '' ...{hacer código} 
-
-console.log('aaa')
+// BONUS: dentro del for: if integrantes.value = '' {continue} O if integrantes.value !== '' ...{hacer código}
 
 const $botonAgregar = document.querySelector('#boton-agregar')
 const $botonQuitar = document.querySelector('#boton-quitar')
@@ -107,7 +105,7 @@ $botonCalcular.onclick = function(){
     anualMayor.textContent += mayor()
     anualMenor.textContent += menor()
     anualPromedio.textContent += promedio ()
-    mensualMayor.textContent += salarioMensual(mayor())
+    mensualMayor.textContent += salarioMensual()
 
     }
 
