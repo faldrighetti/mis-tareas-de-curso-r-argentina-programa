@@ -9,42 +9,42 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 
 const $botonProcesar = document.querySelector('#procesar')
 
-const grupo_familiar = document.querySelector('#grupo-familiar')
+const grupoFamiliar = document.querySelector('#grupo-familiar')
 const $botonCalcular = document.createElement('button')
+$botonCalcular.className = 'boton-prueba'
 $botonCalcular.id = 'boton-calcular'
 $botonCalcular.textContent = 'Calcular'
 
-function mayor (){
+function obtenerNumeroMayor(){
     let edades = document.querySelectorAll('.edades-integrantes')
-    let mayor_num = edades[0].value
+    let edadMayor = edades[0].value
     for(let i = 0; i < edades.length; i++) {
-        if(edades[i].value > mayor_num){
-            mayor_num = edades[i].value
+        if(edades[i].value > edadMayor){
+            edadMayor = edades[i].value
         }
     }
-    return Number(mayor_num)
+    return Number(edadMayor)
 }
 
 
-function menor(){
+function obtenerNumeroMenor(){
     let edades = document.querySelectorAll('.edades-integrantes')
-    let menor_num = edades[0].value
+    let edadMenor = edades[0].value
     for(let i = 0; i < edades.length; i++) {
-        if(edades[i].value < menor_num){
-            menor_num = edades[i].value
+        if(edades[i].value < edadMenor){
+            edadMenor = edades[i].value
         }
     }
 
-    return menor_num
+    return edadMenor
 }
 
-function promedio(){
+function obtenerPromedio(){
     let edades = document.querySelectorAll('.edades-integrantes')
     let suma = 0
     for(let i = 0; i < edades.length; i++) {
         suma += Number(edades[i].value)
     }
-
     return suma / edades.length
 }
 
@@ -55,12 +55,12 @@ let resetear = function(){
         totalIntegrantes[i].remove()
     }
 
-    destruir_boton()
+    destruirBoton()
 }
 
 const $botonResetear = document.querySelector('#resetear')
 
-function destruir_boton(){
+function destruirBoton(){
     let botonesCalculo = document.querySelectorAll('#boton-calcular')
     for (i = 0; i < botonesCalculo.length; i++){
         if(botonesCalculo.length > 0){
@@ -73,10 +73,9 @@ $botonResetear.onclick = function(){
     resetear()
 }
 
-function crea_inputs(){
-
+function crearInputs(){
     const integrantes = Number(document.querySelector('#pregunta').value)
-    destruir_boton()
+    destruirBoton()
 
     for (i = 0; i < integrantes; i++){
         const nuevoDiv = document.createElement('div')
@@ -89,44 +88,32 @@ function crea_inputs(){
         nuevoDiv.appendChild(nuevoLabel)
         nuevoDiv.appendChild(nuevoInput)
 
-        const grupo_familiar = document.querySelector('#grupo-familiar')
-        grupo_familiar.appendChild(nuevoDiv)
+        const grupoFamiliar = document.querySelector('#grupo-familiar')
+        grupoFamiliar.appendChild(nuevoDiv)
     }
-    crea_boton()
+    crearBoton()
 }
 
-function crea_boton(){
-    grupo_familiar.appendChild($botonCalcular)
+function crearBoton(){
+    grupoFamiliar.appendChild($botonCalcular)
 
 }
 
 $botonProcesar.onclick = function(){
-
     resetear()
-    crea_inputs()
+    crearInputs()
 
     return false;    
 }
 
 $botonCalcular.onclick = function(){
-    let edades = document.querySelectorAll('.edades-integrantes')
-    let edad_mayor = document.querySelector('#edad-mayor')
-    let edad_menor = document.querySelector('#edad-menor')
-    let edad_promedio = document.querySelector('#edad-promedio')
+    let edadMayor = document.querySelector('#edad-mayor')
+    let edadMenor = document.querySelector('#edad-menor')
+    let edadPromedio = document.querySelector('#edad-promedio')
 
-    edad_mayor.textContent = mayor()
-    edad_menor.textContent = menor()
-    edad_promedio.textContent = promedio()
+    edadMayor.textContent = obtenerNumeroMayor()
+    edadMenor.textContent = obtenerNumeroMenor()
+    edadPromedio.textContent = obtenerPromedio()
 
     return false;
-}
-
-function validarEdades(){
-    let edades = document.querySelectorAll('.edades-integrantes')
-    for (let i = 0; i < edades.length; i++){
-        if (edades[i] > 0){
-            return 'No se puede ingresar un número negativo como edad'
-        }
-    }
-    return ''
 }
