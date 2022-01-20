@@ -36,7 +36,7 @@ function menor(){
     }
 
     return menor_num
-    }
+}
 
 function promedio(){
     let edades = document.querySelectorAll('.edades-integrantes')
@@ -119,4 +119,14 @@ $botonCalcular.onclick = function(){
     edad_promedio.textContent = promedio()
 
     return false;
+}
+
+function validarEdades(){
+    let edades = document.querySelectorAll('.edades-integrantes')
+    for (let i = 0; i < edades.length; i++){
+        if (edades[i] > 0){
+            return 'No se puede ingresar un número negativo como edad'
+        }
+    }
+    return ''
 }
