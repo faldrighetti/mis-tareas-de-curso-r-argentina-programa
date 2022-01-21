@@ -118,8 +118,8 @@ $botonCalcular.onclick = function(){
     return false;
 }
 let edades = document.querySelectorAll('.edades-integrantes')
+
 function validarEdades(edades){
-    
     for(let i = 0; i < edades.length; i++){
         if (Number(edades[i].value) < 0){
             return 'No se puede ingresar un número negativo como edad'
