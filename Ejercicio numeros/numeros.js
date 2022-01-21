@@ -7,75 +7,75 @@
 // 3. obtener el número más grande y mostrarlo en un <em> pre-creado con el texto "El número más grande es..."
 // 4. obtener el número que más se repite y mostrarlo en un <em> pre-creado con el texto "El número más frecuente es..."
 
-listanum = []
+listaNumeros = []
 
 const numeros = document.querySelectorAll('li')
 
 console.log(numeros)
 
 for(let i = 0; i < numeros.length; i++){
-    listanum.push(Number(numeros[i].innerText))
+    listaNumeros.push(Number(numeros[i].innerText))
 }
 
-console.log(listanum)
+console.log(listaNumeros)
 
 let total = 0
 
-for(let i = 0; i < listanum.length; i++){
-    total += listanum[i]
+for(let i = 0; i < listaNumeros.length; i++){
+    total += listaNumeros[i]
 }
-total / listanum.length
+total / listaNumeros.length
 
-let promedio = total/listanum.length
+let promedio = total/listaNumeros.length
 
 console.log(promedio)
 
 
-let masGrande = function(){
-    let mayor = listanum[0]
-    for(let i = 0; i < listanum.length; i++){
-        if (listanum[i] > mayor){
-            mayor = listanum[i]
+let obtenerNumeroMasGrande = function(){
+    let mayor = listaNumeros[0]
+    for(let i = 0; i < listaNumeros.length; i++){
+        if (listaNumeros[i] > mayor){
+            mayor = listaNumeros[i]
         }
     }
     return mayor
 }
 
-let masChico = function(){
-    let menor = listanum[0]
-    for(let i = 0; i < listanum.length; i++){
-        if (listanum[i] < menor){
-            menor = listanum[i]
+let obtenerNumeroMasChico = function(){
+    let menor = listaNumeros[0]
+    for(let i = 0; i < listaNumeros.length; i++){
+        if (listaNumeros[i] < menor){
+            menor = listaNumeros[i]
         }
     }
     return menor
 }
 
 console.log('El promedio es ' + promedio)
-console.log('El más chico es '+ masChico())
-console.log('El más grande es '+ masGrande())
+console.log('El más chico es '+ obtenerNumeroMasChico())
+console.log('El más grande es '+ obtenerNumeroMasGrande())
 
 document.querySelector('#texto-promedio').innerText += promedio
-document.querySelector('#texto-menor').innerText += masChico()
-document.querySelector('#texto-mayor').innerText += masGrande()
+document.querySelector('#texto-menor').innerText += obtenerNumeroMasChico()
+document.querySelector('#texto-mayor').innerText += obtenerNumeroMasGrande()
 
 
 /*let contador = 0
 let caracteresVeces = []
 
-for (let i = 0; i < listanum.length; i++){
+for (let i = 0; i < listaNumeros.length; i++){
     for (let j = 0; j < caracteresVeces.length, j++){
         if (i === j){
             continue
-        } else{caracteresVeces.push(listanum[i])
+        } else{caracteresVeces.push(listaNumeros[i])
         }
     }
 }
 console.log(caracteresVeces)
 
 let frecuente = function{
-    for(let i = 0; i < listanum.length; i++){
-        if (listanum[i] === i// MODIFICAR QUE TIENE QUE ESTAR EN CARACTERES VECES){
+    for(let i = 0; i < listaNumeros.length; i++){
+        if (listaNumeros[i] === i// MODIFICAR QUE TIENE QUE ESTAR EN CARACTERES VECES){
             contador ++
         }
     }
