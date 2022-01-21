@@ -111,16 +111,15 @@ $botonCalcular.onclick = function(){
     let edadMenor = document.querySelector('#edad-menor')
     let edadPromedio = document.querySelector('#edad-promedio')
 
-    probarValidarEdades()
     edadMayor.textContent = obtenerNumeroMayor()
     edadMenor.textContent = obtenerNumeroMenor()
     edadPromedio.textContent = obtenerPromedio()
 
     return false;
 }
-
-function validarEdades(){
-    let edades = document.querySelectorAll('.edades-integrantes')
+let edades = document.querySelectorAll('.edades-integrantes')
+function validarEdades(edades){
+    
     for(let i = 0; i < edades.length; i++){
         if (Number(edades[i].value) < 0){
             return 'No se puede ingresar un número negativo como edad'
