@@ -14,41 +14,41 @@ const $botonQuitar = document.querySelector('#boton-quitar')
 const $botonCalcular = document.querySelector('#boton-calcular')
 
 
-function mayor(){
+function obtenerNumeroMayor(){
 
     let salariosIntegrantes = document.querySelectorAll('.salario-integrantes')
-    let mayor_num = Number(salariosIntegrantes[0].value)
+    let numeroMayor = Number(salariosIntegrantes[0].value)
     for(let i = 0; i < salariosIntegrantes.length; i++) {
 
         if(salariosIntegrantes[i].value === ''){
             continue
         }
 
-        if(Number(salariosIntegrantes[i].value) > mayor_num){
-            mayor_num = Number(salariosIntegrantes[i].value)
+        if(Number(salariosIntegrantes[i].value) > numeroMayor){
+            numeroMayor = Number(salariosIntegrantes[i].value)
         }
     }
-    return mayor_num
+    return numeroMayor
     }
 
-function menor(){
+function obtenerNumeroMenor(){
 
     let salariosIntegrantes = document.querySelectorAll('.salario-integrantes')
-    let menor_num = Number(salariosIntegrantes[0].value)
+    let numeroMenor = Number(salariosIntegrantes[0].value)
     for(let i = 0; i < salariosIntegrantes.length; i++) {
 
         if(salariosIntegrantes[i].value === ''){
             continue
         }
 
-        if(Number(salariosIntegrantes[i].value) < menor_num){
-            menor_num = Number(salariosIntegrantes[i].value)
+        if(Number(salariosIntegrantes[i].value) < numeroMenor){
+            numeroMenor = Number(salariosIntegrantes[i].value)
         }
     }
-    return menor_num
+    return numeroMenor
     }
 
-function promedio(){
+function obtenerPromedio(){
 
     let salariosIntegrantes = document.querySelectorAll('.salario-integrantes')
     let suma = 0
@@ -102,9 +102,9 @@ $botonCalcular.onclick = function(){
     const anualPromedio = document.querySelector('#anual-promedio')
     const mensualMayor = document.querySelector('#mensual-mayor')
 
-    anualMayor.textContent += mayor()
-    anualMenor.textContent += menor()
-    anualPromedio.textContent += promedio ()
+    anualMayor.textContent += obtenerNumeroMayor()
+    anualMenor.textContent += obtenerNumeroMenor()
+    anualPromedio.textContent += obtenerPromedio ()
     mensualMayor.textContent += salarioMensual()
 
     }
@@ -116,12 +116,12 @@ function salarioMensual(){
         salariosMensuales.push(Number(salariosIntegrantes[i].value) / 12)
     }
 
-    let mayor_num = salariosMensuales[0]
+    let numeroMayor = salariosMensuales[0]
 
     for (let i = 0;i < salariosMensuales.length; i++) {
-        if(salariosMensuales[i] > mayor_num){
-            mayor_num = salariosMensuales[i]
+        if(salariosMensuales[i] > numeroMayor){
+            numeroMayor = salariosMensuales[i]
         }
     }
-    return mayor_num
+    return numeroMayor
     }
