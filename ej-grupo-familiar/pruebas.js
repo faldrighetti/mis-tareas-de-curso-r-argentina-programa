@@ -12,6 +12,11 @@ function probarValidarEdades(){
         validarEdades('30') === '',
         'La función validarEdades falló al validar una edad correcta'
     )
+
+    console.assert( 
+        validarEdades('') === 'Wiiii',
+    'Este mensaje no se tiene que mostrar'
+    )
 }
 
 probarValidarEdades()

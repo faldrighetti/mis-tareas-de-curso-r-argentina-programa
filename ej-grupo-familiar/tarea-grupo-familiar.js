@@ -26,7 +26,6 @@ function obtenerNumeroMayor(){
     return Number(edadMayor)
 }
 
-
 function obtenerNumeroMenor(){
     let edades = document.querySelectorAll('.edades-integrantes')
     let edadMenor = edades[0].value
@@ -48,6 +47,19 @@ function obtenerPromedio(){
     return suma / edades.length
 }
 
+function limpiarCampos(){
+
+    let edadMayor = document.querySelector('#edad-mayor')
+    let edadMenor = document.querySelector('#edad-menor')
+    let edadPromedio = document.querySelector('#edad-promedio')
+
+    edadMayor.textContent = ''
+    edadMenor.textContent = ''
+    edadPromedio.textContent = ''
+
+    return false;
+}
+
 let resetear = function(){
     const totalIntegrantes = document.querySelectorAll('.integrante') //crea un NodeList con los elementos de clase 'integrante',
     // o sea los divs con cada input del grupo familiar.
@@ -55,10 +67,18 @@ let resetear = function(){
         totalIntegrantes[i].remove()
     }
 
+    let divEdades = document.querySelector("#resultado")
+    divEdades.className = 'oculto'
+
+    limpiarCampos()
     destruirBoton()
 }
 
 const $botonResetear = document.querySelector('#resetear')
+
+$botonResetear.onclick = function(){
+    resetear()
+}
 
 function destruirBoton(){
     let botonesCalculo = document.querySelectorAll('#boton-calcular')
@@ -67,10 +87,6 @@ function destruirBoton(){
             botonesCalculo[i].remove()
         }
     }
-}
-
-$botonResetear.onclick = function(){
-    resetear()
 }
 
 function crearInputs(){
@@ -96,7 +112,6 @@ function crearInputs(){
 
 function crearBoton(){
     grupoFamiliar.appendChild($botonCalcular)
-
 }
 
 $botonProcesar.onclick = function(){
@@ -107,6 +122,13 @@ $botonProcesar.onclick = function(){
 }
 
 $botonCalcular.onclick = function(){
+    procesarFormularioEdades()
+}
+
+function procesarFormularioEdades(){
+    let divEdades = document.querySelector("#resultado")
+    divEdades.className = ''
+
     let edadMayor = document.querySelector('#edad-mayor')
     let edadMenor = document.querySelector('#edad-menor')
     let edadPromedio = document.querySelector('#edad-promedio')
@@ -117,13 +139,24 @@ $botonCalcular.onclick = function(){
 
     return false;
 }
+
+const $form = document.querySelector('form')
+
 let edades = document.querySelectorAll('.edades-integrantes')
+
+console.log(edades) // Es un array vacío
 
 function validarEdades(edades){
     for(let i = 0; i < edades.length; i++){
         if (Number(edades[i].value) < 0){
             return 'No se puede ingresar un número negativo como edad'
         }
+        else if(Number(edades[i].value) > 110){
+            return 'El número que ingresaste es para la persona más vieja del mundo!'
+        }
+        else if (!/[0-9]/.test( Number(edades[i].value) )){
+            return 'El campo edades solo puede contener números enteros'
+        }
+    }
     return ''
-}
 }
