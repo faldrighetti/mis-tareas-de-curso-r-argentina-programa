@@ -9,119 +9,142 @@ Punto bonus: si hay inputs vacíos, ignorarlos en el cálculo (no contarlos como
 
 // BONUS: dentro del for: if integrantes.value = '' {continue} O if integrantes.value !== '' ...{hacer código}
 
-const $botonAgregar = document.querySelector('#boton-agregar')
-const $botonQuitar = document.querySelector('#boton-quitar')
-const $botonCalcular = document.querySelector('#boton-calcular')
-
+const $botonAgregar = document.querySelector('#boton-agregar');
+const $botonQuitar = document.querySelector('#boton-quitar');
+const $botonCalcular = document.querySelector('#boton-calcular');
 
 function obtenerNumeroMayor(){
 
-    let salariosIntegrantes = document.querySelectorAll('.salario-integrantes')
-    let numeroMayor = Number(salariosIntegrantes[0].value)
+    let salariosIntegrantes = document.querySelectorAll('.salario-integrantes');
+    let numeroMayor = Number(salariosIntegrantes[0].value);
     for(let i = 0; i < salariosIntegrantes.length; i++) {
 
         if(salariosIntegrantes[i].value === ''){
-            continue
+            continue;
         }
 
         if(Number(salariosIntegrantes[i].value) > numeroMayor){
-            numeroMayor = Number(salariosIntegrantes[i].value)
+            numeroMayor = Number(salariosIntegrantes[i].value);
         }
     }
-    return numeroMayor
-    }
+    return numeroMayor;
+}
 
 function obtenerNumeroMenor(){
 
-    let salariosIntegrantes = document.querySelectorAll('.salario-integrantes')
-    let numeroMenor = Number(salariosIntegrantes[0].value)
+    let salariosIntegrantes = document.querySelectorAll('.salario-integrantes');
+    let numeroMenor = Number(salariosIntegrantes[0].value);
     for(let i = 0; i < salariosIntegrantes.length; i++) {
 
         if(salariosIntegrantes[i].value === ''){
-            continue
+            continue;
         }
 
         if(Number(salariosIntegrantes[i].value) < numeroMenor){
-            numeroMenor = Number(salariosIntegrantes[i].value)
+            numeroMenor = Number(salariosIntegrantes[i].value);
         }
     }
     return numeroMenor
-    }
+}
 
 function obtenerPromedio(){
 
-    let salariosIntegrantes = document.querySelectorAll('.salario-integrantes')
-    let suma = 0
+    let salariosIntegrantes = document.querySelectorAll('.salario-integrantes');
+    let suma = 0;
     for(let i = 0; i < salariosIntegrantes.length; i++) {
-        suma += Number(salariosIntegrantes[i].value)
+        suma += Number(salariosIntegrantes[i].value);
     }
 
-    return suma / salariosIntegrantes.length
-    }
+    return suma / salariosIntegrantes.length;
+}
 
 function agregar(){
 
-    event.preventDefault()
+    event.preventDefault();
 
-    const nuevoDiv = document.createElement('div')
-    nuevoDiv.className = 'integrante'
-    const nuevoInput = document.createElement('input')
-    nuevoInput.className = 'salario-integrantes'
-    const nuevoLabel = document.createElement('label')
-    nuevoLabel.textContent = 'Ingrese salario anual del integrante '
+    const nuevoDiv = document.createElement('div');
+    nuevoDiv.className = 'integrante';
+    const nuevoInput = document.createElement('input');
+    nuevoInput.className = 'salario-integrantes';
+    const nuevoLabel = document.createElement('label');
+    nuevoLabel.textContent = 'Ingrese salario anual del integrante ';
 
-    nuevoDiv.appendChild(nuevoLabel)
-    nuevoDiv.appendChild(nuevoInput)
+    nuevoDiv.appendChild(nuevoLabel);
+    nuevoDiv.appendChild(nuevoInput);
 
-    const salarios = document.querySelector('#formulario-salarios')
-    salarios.appendChild(nuevoDiv)
+    const salarios = document.querySelector('#formulario-salarios');
+    salarios.appendChild(nuevoDiv);
 
     return false;
-    }
+}
 
 $botonAgregar.onclick = function(){
-    agregar()
-    }
+    agregar();
+}
 
 function quitar(){
-    event.preventDefault()
+    event.preventDefault();
     
-    let salariosIntegrantes = document.querySelectorAll('.integrante')
-    salariosIntegrantes[salariosIntegrantes.length - 1].remove()
-    }
+    let salariosIntegrantes = document.querySelectorAll('.integrante');
+    salariosIntegrantes[salariosIntegrantes.length - 1].remove();
+}
 
 $botonQuitar.onclick = function(){
-    quitar()
-    }
+    quitar();
+}
+
+function resetear(){
+    const anualMayor = document.querySelector('#anual-mayor');
+    const anualMenor = document.querySelector('#anual-menor');
+    const anualPromedio = document.querySelector('#anual-promedio');
+    const mensualMayor = document.querySelector('#mensual-mayor');
+
+    anualMayor.textContent = "El salario anual más alto es: ";
+    anualMenor.textContent = "El salario anual más bajo es: ";
+    anualPromedio.textContent = "El salario anual promedio es: ";
+    mensualMayor.textContent = "El salario mensual más alto es: ";
+}
 
 $botonCalcular.onclick = function(){
-    event.preventDefault()
+    event.preventDefault();
 
-    const anualMayor = document.querySelector('#anual-mayor')
-    const anualMenor = document.querySelector('#anual-menor')
-    const anualPromedio = document.querySelector('#anual-promedio')
-    const mensualMayor = document.querySelector('#mensual-mayor')
+    resetear();
+    const anualMayor = document.querySelector('#anual-mayor');
+    const anualMenor = document.querySelector('#anual-menor');
+    const anualPromedio = document.querySelector('#anual-promedio');
+    const mensualMayor = document.querySelector('#mensual-mayor');
 
-    anualMayor.textContent += obtenerNumeroMayor()
-    anualMenor.textContent += obtenerNumeroMenor()
-    anualPromedio.textContent += obtenerPromedio ()
-    mensualMayor.textContent += salarioMensual()
+    anualMayor.textContent += obtenerNumeroMayor();
+    anualMenor.textContent += obtenerNumeroMenor();
+    anualPromedio.textContent += obtenerPromedio().toFixed(2);
+    mensualMayor.textContent += salarioMensual().toFixed(2);
 
-    }
+}
 
 function salarioMensual(){
-    let salariosIntegrantes = document.querySelectorAll('.salario-integrantes')
-    let salariosMensuales = []
+    let salariosIntegrantes = document.querySelectorAll('.salario-integrantes');
+    let salariosMensuales = [];
     for (let i = 0; i < salariosIntegrantes.length; i++){
-        salariosMensuales.push(Number(salariosIntegrantes[i].value) / 12)
+        console.log(validarSalario(Number(salariosIntegrantes[i].value)));
+        probarValidarSalario();
+        salariosMensuales.push(Number(salariosIntegrantes[i].value) / 12);
+        
     }
 
-    let numeroMayor = salariosMensuales[0]
+    let numeroMayor = salariosMensuales[0];
 
-    for (let i = 0;i < salariosMensuales.length; i++) {
+    for (let i = 0; i < salariosMensuales.length; i++) {
         if(salariosMensuales[i] > numeroMayor){
-            numeroMayor = salariosMensuales[i]
+            numeroMayor = salariosMensuales[i];
         }
     }
-    return numeroMayor
+    return numeroMayor;
+}
+
+function validarSalario(salario){
+    if(salario <= 0){
+        return 'El salario ingresado debe ser mayor a cero';
     }
+
+    return '';
+}
