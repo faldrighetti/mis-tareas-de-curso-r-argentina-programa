@@ -61,13 +61,14 @@ function obtenerPromedio(){
 function agregar(){
 
     event.preventDefault();
+    const integrantes = document.querySelectorAll('.integrante');
 
     const nuevoDiv = document.createElement('div');
     nuevoDiv.className = 'integrante';
     const nuevoInput = document.createElement('input');
     nuevoInput.className = 'salario-integrantes';
     const nuevoLabel = document.createElement('label');
-    nuevoLabel.textContent = 'Ingrese salario anual del integrante ';
+    nuevoLabel.textContent = `Ingrese salario anual del integrante #${integrantes.length + 1}`;
 
     nuevoDiv.appendChild(nuevoLabel);
     nuevoDiv.appendChild(nuevoInput);
@@ -89,6 +90,13 @@ function quitar(){
     salariosIntegrantes[salariosIntegrantes.length - 1].remove();
 }
 
+function borrarErroresPrevios(){
+    const erroresPrevios = document.querySelectorAll('li');
+    erroresPrevios.forEach(function(errorPrevio){
+        errorPrevio.remove();
+    })
+}
+
 $botonQuitar.onclick = function(){
     quitar();
 }
@@ -99,13 +107,41 @@ function resetear(){
     const anualPromedio = document.querySelector('#anual-promedio');
     const mensualMayor = document.querySelector('#mensual-mayor');
 
-    anualMayor.textContent = "El salario anual más alto es: ";
-    anualMenor.textContent = "El salario anual más bajo es: ";
-    anualPromedio.textContent = "El salario anual promedio es: ";
-    mensualMayor.textContent = "El salario mensual más alto es: ";
+    anualMayor.textContent = "";
+    anualMenor.textContent = "";
+    anualPromedio.textContent = "";
+    mensualMayor.textContent = ""; 
 }
 
 $botonCalcular.onclick = function(){
+    manejarErrores();
+
+    if (manejarErrores() === 0){
+        escribirResultados()
+    };
+}
+
+function manejarErrores(){
+
+    borrarErroresPrevios();
+    let cantidadErrores = 0;
+    let salariosIntegrantes = document.querySelectorAll('.salario-integrantes');
+    let campoErrores = document.querySelector('#errores');
+
+    salariosIntegrantes.forEach(function(elemento){
+        if(validarSalario(Number(elemento.value)) !== ''){
+            cantidadErrores++;
+            let mensajeError = validarSalario(Number(elemento.value));
+            let $error = document.createElement('li');
+            $error.innerText = mensajeError;
+            campoErrores.appendChild($error);
+        }
+    })
+
+    return cantidadErrores;
+}
+
+function escribirResultados(){
     event.preventDefault();
 
     resetear();
@@ -114,21 +150,17 @@ $botonCalcular.onclick = function(){
     const anualPromedio = document.querySelector('#anual-promedio');
     const mensualMayor = document.querySelector('#mensual-mayor');
 
-    anualMayor.textContent += obtenerNumeroMayor();
-    anualMenor.textContent += obtenerNumeroMenor();
-    anualPromedio.textContent += obtenerPromedio().toFixed(2);
-    mensualMayor.textContent += salarioMensual().toFixed(2);
-
+    anualMayor.textContent = 'El salario anual más alto es: ' + obtenerNumeroMayor();
+    anualMenor.textContent = 'El salario anual más bajo es: ' + obtenerNumeroMenor();
+    anualPromedio.textContent = 'El salario anual promedio es: ' + obtenerPromedio().toFixed(2);
+    mensualMayor.textContent = 'El salario mensual más alto es: ' + salarioMensual().toFixed(2);
 }
 
 function salarioMensual(){
     let salariosIntegrantes = document.querySelectorAll('.salario-integrantes');
     let salariosMensuales = [];
     for (let i = 0; i < salariosIntegrantes.length; i++){
-        console.log(validarSalario(Number(salariosIntegrantes[i].value)));
-        probarValidarSalario();
         salariosMensuales.push(Number(salariosIntegrantes[i].value) / 12);
-        
     }
 
     let numeroMayor = salariosMensuales[0];
@@ -142,9 +174,17 @@ function salarioMensual(){
 }
 
 function validarSalario(salario){
+    let textoError = '';
+
     if(salario <= 0){
-        return 'El salario ingresado debe ser mayor a cero';
+        textoError = 'El salario ingresado debe ser mayor a cero';
+    }
+    if(/[A-z]/.test(salario)){
+        textoError = 'Los campos admiten únicamente números enteros';
+    }
+    if(/\./.test(salario)){
+        textoError = 'Los campos no admiten números decimales';
     }
 
-    return '';
+    return textoError;
 }
