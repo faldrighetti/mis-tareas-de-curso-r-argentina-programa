@@ -1,50 +1,12 @@
-/*
-TAREA: Empezar preguntando cuánta gente hay en el grupo familiar.
-Crear tantos inputs+labels como gente haya para completar la edad de cada integrante.
-Al hacer click en "calcular", mostrar en un elemento pre-existente la mayor edad, la menor edad y el promedio del grupo 
-familiar.
-Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, borrando los inputs ya creados 
-(investigar cómo en MDN).
-*/
-
 const $botonProcesar = document.querySelector('#procesar');
-
 const grupoFamiliar = document.querySelector('#grupo-familiar');
 const $botonCalcular = document.createElement('button');
+const $botonResetear = document.querySelector('#resetear')
+
 $botonCalcular.className = 'boton-prueba';
 $botonCalcular.id = 'boton-calcular';
 $botonCalcular.textContent = 'Calcular';
-
-function obtenerNumeroMayor(){
-    let edades = document.querySelectorAll('.edades-integrantes')
-    let edadMayor = Number(edades[0].value);
-    for(let i = 0; i < edades.length; i++) {
-        if(Number(edades[i].value) > edadMayor){
-            edadMayor = Number(edades[i].value);
-        }
-    }
-    return edadMayor;
-}
-
-function obtenerNumeroMenor(){
-    let edades = document.querySelectorAll('.edades-integrantes')
-    let edadMenor = Number(edades[0].value);
-    for(let i = 0; i < edades.length; i++) {
-        if(Number(edades[i].value) < edadMenor){
-            edadMenor = Number(edades[i].value);
-        }
-    }
-    return edadMenor;
-}
-
-function obtenerPromedio(){
-    let edades = document.querySelectorAll('.edades-integrantes');
-    let suma = 0;
-    for(let i = 0; i < edades.length; i++) {
-        suma += Number(edades[i].value);
-    }
-    return suma / edades.length;
-}
+const $form = document.querySelector('form');
 
 function limpiarCampos(){
 
@@ -72,8 +34,6 @@ let resetear = function(){
     destruirBoton();
 }
 
-const $botonResetear = document.querySelector('#resetear')
-
 $botonResetear.onclick = function(){
     resetear();
 }
@@ -89,23 +49,43 @@ function destruirBoton(){
 
 function crearInputs(){
     const integrantes = Number(document.querySelector('#pregunta').value);
-    destruirBoton();
 
-    for (i = 0; i < integrantes; i++){
-        const nuevoDiv = document.createElement('div');
-        nuevoDiv.className = 'integrante';
-        const nuevoInput = document.createElement('input');
-        nuevoInput.className = 'edades-integrantes';
-        const nuevoLabel = document.createElement('label');
-        nuevoLabel.textContent = 'Ingrese edad del integrante #' + (i + 1);
+    const exitoIntegrantes = validarIntegrantes() === '';
+    if (exitoIntegrantes){
+        destruirBoton();
+        borrarErroresPrevios();
 
-        nuevoDiv.appendChild(nuevoLabel);
-        nuevoDiv.appendChild(nuevoInput);
-
-        const grupoFamiliar = document.querySelector('#grupo-familiar');
-        grupoFamiliar.appendChild(nuevoDiv);
+        for (i = 0; i < integrantes; i++){
+            const nuevoDiv = document.createElement('div');
+            nuevoDiv.className = 'integrante';
+            const nuevoInput = document.createElement('input');
+            nuevoInput.className = 'edades-integrantes';
+            const nuevoLabel = document.createElement('label');
+            nuevoLabel.textContent = `Ingrese edad del integrante # ${i + 1}`;
+    
+            nuevoDiv.appendChild(nuevoLabel);
+            nuevoDiv.appendChild(nuevoInput);
+    
+            const grupoFamiliar = document.querySelector('#grupo-familiar');
+            grupoFamiliar.appendChild(nuevoDiv);
+        }
+        crearBoton();
     }
-    crearBoton();
+    else {
+        borrarErroresPrevios();
+        const $erroresIntegrantes = document.querySelector('#errores-integrantes');
+        const errorIntegrantes = document.createElement('li');
+        errorIntegrantes.innerText = validarIntegrantes();
+        $erroresIntegrantes.appendChild(errorIntegrantes);
+    }
+    
+}
+
+function borrarErroresPrevios(){
+    const erroresPrevios = document.querySelectorAll('li');
+    erroresPrevios.forEach(function(errorPrevio){
+        errorPrevio.remove();
+    })
 }
 
 function crearBoton(){
@@ -120,46 +100,95 @@ $botonProcesar.onclick = function(){
 }
 
 $botonCalcular.onclick = function(){
-    procesarFormularioEdades();
+    console.log(manejarErroresEdades());
+
+    const esExito = manejarErroresEdades() === 0;
+    if(esExito){
+        escribirResultados();
+    }
 }
 
-function procesarFormularioEdades(){
+function manejarErroresEdades(){
+
+    const edades = document.querySelectorAll('.edades-integrantes');
+    let cantidadErrores = 0;
+    const $erroresEdades = document.querySelector('#errores-edades');
+
+    edades.forEach(function(edadARevisar){
+        edadARevisar = Number(edadARevisar.value);
+        const error = validarEdades(edadARevisar);
+        if(validarEdades(edadARevisar) !== ''){
+            cantidadErrores++;
+
+            const $error = document.createElement('li');
+            $error.innerText = error;
+
+            $erroresEdades.appendChild($error);
+        }
+    })
+    //EL LI SE CREA DOS VECES, UNA ACÁ Y OTRA EN CREAR INPUTS. UNIFICAR.
+    //LUEGO PROBAR EL RESTO DE VALIDACIONES. INTERPRETA QUE SE PONEN DECIMALES AUTOMÁTICAMENTE
+    //REVISAR LAS PRUEBAS DE LAS VALIDACIONES
+    return cantidadErrores;
+}
+
+
+function escribirResultados(){
     let divEdades = document.querySelector("#resultado");
     divEdades.className = '';
 
+    const edades = document.querySelectorAll('.edades-integrantes');
     let edadMayor = document.querySelector('#edad-mayor');
     let edadMenor = document.querySelector('#edad-menor');
     let edadPromedio = document.querySelector('#edad-promedio');
 
-    let edadIngresada = obtenerNumeroMayor();
-    console.log(validarEdades(edadIngresada));
-    edadMayor.textContent = edadIngresada;
-
-    edadIngresada = obtenerNumeroMenor();
-    console.log(validarEdades(edadIngresada));
-    edadMenor.textContent = edadIngresada;
-
-    edadPromedio.textContent = obtenerPromedio();
-
-    return false;
+    edadMayor.textContent = obtenerNumeroMayor(edades);
+    edadMenor.textContent = obtenerNumeroMenor(edades);
+    edadPromedio.textContent = obtenerPromedio(edades);
+    
+    event.preventDefault();
 }
 
-const $form = document.querySelector('form');
+//Función para validar la cantidad de integrantes
+//Función para escribir el error si lo hay. Si es éxito, continuar como antes (manejarErroresIntegrantes)
+
+//Función para procesar las edades recibidas
+//Función para validar edades (manejarErroresEdades)
+//Función para escribir text content
+
+function validarIntegrantes(){
+    const integrantes = Number(document.querySelector('#pregunta').value);
+    let textoError = '';
+    //TODO: vincular esta función al hacer clic en procesar
+    if(integrantes < 1){
+        textoError = 'La familia debe tener al menos un integrante';
+    }
+    else if(integrantes >= 10){
+        textoError = 'Este campo no admite más de 10 integrantes';
+    }
+
+    return textoError;
+}
+
 
 function validarEdades(edadAValidar){
+    let textoError = ''
 
         if (!edadAValidar){
-            return 'Este campo no puede estar vacío';
+            textoError = 'Este campo no puede estar vacío';
         }
         else if (edadAValidar <= 0){
-            return 'Debe ingresar una edad mayor a cero';
+            textoError = 'Debe ingresar una edad mayor a cero';
         }
         else if(edadAValidar > 110){
-            return 'El número que ingresaste es para la persona más vieja del mundo!';
+            textoError = 'El número que ingresaste es para la persona más vieja del mundo!';
         }
-        /*else if (!/[0-9]/.test( Number(edades[i].value) )){
-            return 'El campo edades solo puede contener números enteros';
+        else if(/[A-z]/.test(edadAValidar)){
+            textoError = 'El campo edades solo puede contener números';
+        }
+        /*else if(/./.test(edadAValidar)){
+            textoError = 'El campo edades no puede incluir decimales, solo números enteros';
         }*/
     
-    return '';
+    return textoError;
 }
