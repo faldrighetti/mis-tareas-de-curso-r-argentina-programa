@@ -31,6 +31,7 @@ let resetear = function(){
     divEdades.className = 'oculto';
 
     limpiarCampos();
+    borrarErroresPrevios();
     destruirBoton();
 }
 
@@ -100,8 +101,7 @@ $botonProcesar.onclick = function(){
 }
 
 $botonCalcular.onclick = function(){
-    console.log(manejarErroresEdades());
-
+    
     const esExito = manejarErroresEdades() === 0;
     if(esExito){
         escribirResultados();
@@ -113,6 +113,7 @@ function manejarErroresEdades(){
     const edades = document.querySelectorAll('.edades-integrantes');
     let cantidadErrores = 0;
     const $erroresEdades = document.querySelector('#errores-edades');
+    borrarErroresPrevios();
 
     edades.forEach(function(edadARevisar){
         edadARevisar = Number(edadARevisar.value);
@@ -126,12 +127,9 @@ function manejarErroresEdades(){
             $erroresEdades.appendChild($error);
         }
     })
-    //EL LI SE CREA DOS VECES, UNA ACÁ Y OTRA EN CREAR INPUTS. UNIFICAR.
-    //LUEGO PROBAR EL RESTO DE VALIDACIONES. INTERPRETA QUE SE PONEN DECIMALES AUTOMÁTICAMENTE
-    //REVISAR LAS PRUEBAS DE LAS VALIDACIONES
+
     return cantidadErrores;
 }
-
 
 function escribirResultados(){
     let divEdades = document.querySelector("#resultado");
@@ -144,22 +142,15 @@ function escribirResultados(){
 
     edadMayor.textContent = obtenerNumeroMayor(edades);
     edadMenor.textContent = obtenerNumeroMenor(edades);
-    edadPromedio.textContent = obtenerPromedio(edades);
+    edadPromedio.textContent = obtenerPromedio(edades).toFixed(2);
     
     event.preventDefault();
 }
 
-//Función para validar la cantidad de integrantes
-//Función para escribir el error si lo hay. Si es éxito, continuar como antes (manejarErroresIntegrantes)
-
-//Función para procesar las edades recibidas
-//Función para validar edades (manejarErroresEdades)
-//Función para escribir text content
-
 function validarIntegrantes(){
     const integrantes = Number(document.querySelector('#pregunta').value);
     let textoError = '';
-    //TODO: vincular esta función al hacer clic en procesar
+    
     if(integrantes < 1){
         textoError = 'La familia debe tener al menos un integrante';
     }
@@ -170,12 +161,14 @@ function validarIntegrantes(){
     return textoError;
 }
 
-
 function validarEdades(edadAValidar){
     let textoError = ''
 
-        if (!edadAValidar){
-            textoError = 'Este campo no puede estar vacío';
+        if(/[A-z]/.test(edadAValidar)){
+            textoError = 'El campo edades solo puede contener números';
+        }
+        else if (!edadAValidar){
+            textoError = 'Ningún campo puede estar vacío';
         }
         else if (edadAValidar <= 0){
             textoError = 'Debe ingresar una edad mayor a cero';
@@ -183,12 +176,9 @@ function validarEdades(edadAValidar){
         else if(edadAValidar > 110){
             textoError = 'El número que ingresaste es para la persona más vieja del mundo!';
         }
-        else if(/[A-z]/.test(edadAValidar)){
-            textoError = 'El campo edades solo puede contener números';
-        }
-        /*else if(/./.test(edadAValidar)){
+        else if(/\./.test(edadAValidar)){
             textoError = 'El campo edades no puede incluir decimales, solo números enteros';
-        }*/
+        }
     
     return textoError;
 }

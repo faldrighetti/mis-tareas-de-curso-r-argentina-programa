@@ -4,7 +4,7 @@ function probarValidarEdades(){
         'La función validarEdades falló al validar una edad correcta')
 
     console.assert( 
-        validarEdades('') === 'Este campo no puede estar vacío',
+        validarEdades('') === 'Ningún campo puede estar vacío',
         'La función no funcionó para invalidar un string vacío')
 
     console.assert(
@@ -22,4 +22,4 @@ function probarValidarEdades(){
         'La función falló al invalidar una edad con decimales')
 }
 
-//probarValidarEdades();
+probarValidarEdades();
