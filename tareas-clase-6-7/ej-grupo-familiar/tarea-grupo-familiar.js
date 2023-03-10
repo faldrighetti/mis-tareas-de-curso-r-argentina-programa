@@ -90,7 +90,9 @@ function borrarErroresPrevios(){
 }
 
 function crearBoton(){
+    $botonCalcular.className = 'btn btn-success';
     grupoFamiliar.appendChild($botonCalcular);
+
 }
 
 $botonProcesar.onclick = function(){
@@ -154,7 +156,7 @@ function validarIntegrantes(){
     if(integrantes < 1){
         textoError = 'La familia debe tener al menos un integrante';
     }
-    else if(integrantes >= 10){
+    else if(integrantes > 10){
         textoError = 'Este campo no admite más de 10 integrantes';
     }
 
