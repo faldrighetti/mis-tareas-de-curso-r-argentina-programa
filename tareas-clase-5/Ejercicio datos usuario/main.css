@@ -3,12 +3,7 @@ html, body {
     padding: 0;
 }
 
-html {
-    font-size: 62.5%;
-}
-
 body {
-    align-items: center;
     background: #EFEFEF;
     display: flex;
     flex-direction: column;
@@ -140,31 +135,3 @@ h1 {
 #resultado{
     color: black;
 }
-
-/*
-*{
-    background: black;
-}
-
-p{
-    color:white;
-}
-*/
-
-
-/* 
-
-h1 {
-    font-size: 100px;
-} 
-
-Se usa el * para todo el html. Ejemplo:
-
-*{
-    background: red
-}
-
-
-ID es lo más específico. Después está la clase y en tercer lugar el elemento en sí.
-
-*/

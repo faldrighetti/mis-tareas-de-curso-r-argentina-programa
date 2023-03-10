@@ -66,7 +66,8 @@ function agregar(){
     const nuevoDiv = document.createElement('div');
     nuevoDiv.className = 'integrante';
     const nuevoInput = document.createElement('input');
-    nuevoInput.className = 'salario-integrantes';
+    nuevoInput.className = "form-group mx-sm-2 mb-2";
+    nuevoInput.classList.add('salario-integrantes');
     const nuevoLabel = document.createElement('label');
     nuevoLabel.textContent = `Ingrese salario anual del integrante #${integrantes.length + 1}`;
 
