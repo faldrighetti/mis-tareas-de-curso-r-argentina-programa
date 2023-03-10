@@ -9,11 +9,11 @@ const $botonProcesar = document.querySelector('#boton-procesar');
 
 $botonProcesar.onclick = function(){
     const nombreUsuario = document.querySelector('#nombre-usuario').value;
-    const segNombreUsuario = document.querySelector('#seg-nombre-usuario').value;
+    const segundoNombreUsuario = document.querySelector('#segundo-nombre-usuario').value;
     const apellidoUsuario = document.querySelector('#apellido-usuario').value;
     const edadUsuario = Number(document.querySelector('#edad-usuario').value);
 
-    document.querySelector('#datos-totales').innerText = nombreUsuario + ' ' + segNombreUsuario + ' ' + apellidoUsuario + ', ' + edadUsuario + ' años.';
+    document.querySelector('#datos-totales').innerText = nombreUsuario + ' ' + segundoNombreUsuario + ' ' + apellidoUsuario + ', ' + edadUsuario + ' años.';
     document.querySelector('h1').innerText = 'Bienvenido, ' + nombreUsuario;
     return false;
 }
