@@ -6,6 +6,7 @@
     <title>Ejercicio DOM tiempo videos</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
     <label>Horas Video 1</label> <input type="number" id="horas-1" class="horas" size="1">
@@ -34,18 +35,16 @@
     <label>Minutos Video 4</label> <input type="number" id="minutos-4" class="minutos" size="1">
     <br>
     <label>Segundos Video 4</label> <input type="number" id="segundos-4" class="segundos" size="1">
-
     <br>
     <br>
-     <button type="button" id="calcular-tiempo-total">Calcular total</button>
+     <button type="button" class="btn btn-success" id="calcular-tiempo-total">Calcular total</button>
      <br>
      <br>
      <strong><label>Tiempo total: </label><input type="text" disabled id="horas-totales" size="1"> <label>horas,</label>
-         <input type="text" disabled id="minutos-totales" size="1"> <label>minutos, y</label>
-         <input type="text" disabled id="segundos-totales" size="1"><label>  segundos.</label>
+         <input type="text" disabled id="minutos-totales" size="1"> <label> minutos, y </label>
+         <input type="text" disabled id="segundos-totales" size="1"> <label> segundos.</label>
      </strong>
     </form>
-
     <script src='tiempovideos.js'></script>
 </body>
 </html>
