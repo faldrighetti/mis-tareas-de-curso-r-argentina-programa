@@ -60,9 +60,10 @@ function crearInputs(){
             const nuevoDiv = document.createElement('div');
             nuevoDiv.className = 'integrante';
             const nuevoInput = document.createElement('input');
-            nuevoInput.className = 'edades-integrantes';
+            nuevoInput.className = "form-group mx-sm-2 mb-2";
+            nuevoInput.classList.add('edades-integrantes');
             const nuevoLabel = document.createElement('label');
-            nuevoLabel.textContent = `Ingrese edad del integrante # ${i + 1}`;
+            nuevoLabel.textContent = `Ingrese edad del integrante #${i + 1}`;
     
             nuevoDiv.appendChild(nuevoLabel);
             nuevoDiv.appendChild(nuevoInput);
@@ -90,7 +91,9 @@ function borrarErroresPrevios(){
 }
 
 function crearBoton(){
+    $botonCalcular.className = 'btn btn-success';
     grupoFamiliar.appendChild($botonCalcular);
+
 }
 
 $botonProcesar.onclick = function(){
@@ -101,7 +104,6 @@ $botonProcesar.onclick = function(){
 }
 
 $botonCalcular.onclick = function(){
-    
     const esExito = manejarErroresEdades() === 0;
     if(esExito){
         escribirResultados();
@@ -109,7 +111,6 @@ $botonCalcular.onclick = function(){
 }
 
 function manejarErroresEdades(){
-
     const edades = document.querySelectorAll('.edades-integrantes');
     let cantidadErrores = 0;
     const $erroresEdades = document.querySelector('#errores-edades');
@@ -154,7 +155,7 @@ function validarIntegrantes(){
     if(integrantes < 1){
         textoError = 'La familia debe tener al menos un integrante';
     }
-    else if(integrantes >= 10){
+    else if(integrantes > 10){
         textoError = 'Este campo no admite más de 10 integrantes';
     }
 

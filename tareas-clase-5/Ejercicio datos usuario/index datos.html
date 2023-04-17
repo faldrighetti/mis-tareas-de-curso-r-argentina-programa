@@ -6,30 +6,27 @@
     <title>Ejercicio DOM datos usuario</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
 
-    <h1>Hola!</h1>
+    <h1 class="display-3">Hola!</h1>
  
-    <form>
-        <input type="text" placeholder="Ingresar nombre" id="nombre-usuario">
+    <form class="form-group">
+        <input type="text" class="form-group mx-sm-3 mb-2" placeholder="Nombre" id="nombre-usuario">
+        <br>
+        <input type="text" class="form-group mx-sm-3 mb-2" placeholder="Segundo nombre" id="segundo-nombre-usuario">
+        <br>
+        <input type="text" class="form-group mx-sm-3 mb-2" placeholder="Apellido" id="apellido-usuario">
+        <br>
+        <input type="number" class="form-group mx-sm-3 mb-2" placeholder="Edad" id="edad-usuario">
         <br>
         <br>
-        <input type="text" placeholder="Ingresar segundo nombre" id="seg-nombre-usuario">
-        <br>
-        <br>
-        <input type="text" placeholder="Ingresar apellido" id="apellido-usuario">
-        <br>
-        <br>
-        <input type="number" placeholder="Ingresar edad" id="edad-usuario">
-        <br>
-        <br>
-        <button id="boton-procesar">Procesar datos</button>
-
-
+        <button type="button" class="btn btn-success" id="boton-procesar">Procesar datos</button>
     </form>
+    <br>
 
-    <div id="datos-totales"></div>
+    <div class="font-weight-bold" id="datos-totales"></div>
 
     <script src='datosusuario.js'></script>
 </body>

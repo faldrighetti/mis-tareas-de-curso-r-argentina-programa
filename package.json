@@ -1,0 +1,22 @@
+{
+  "name": "mis-tareas-de-curso-r-argentina-programa",
+  "version": "1.0.0",
+  "description": "Mis tareas del curso de r/argentina programa",
+  "main": "tarea-inputs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faldrighetti/mis-tareas-de-curso-r-argentina-programa.git"
+  },
+  "author": "Federico Aldrighetti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faldrighetti/mis-tareas-de-curso-r-argentina-programa/issues"
+  },
+  "homepage": "https://github.com/faldrighetti/mis-tareas-de-curso-r-argentina-programa#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3"
+  }
+}

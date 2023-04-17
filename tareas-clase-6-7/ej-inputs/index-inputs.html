@@ -6,20 +6,20 @@
     <title>Ejercicio inputs</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-
+    <br>
+    <h2>Calculador de salarios</h2>
+<br>
 <form>
-    <button id="boton-agregar">Agregar dato</button>
-    <button id="boton-quitar">Quitar dato</button>
+    <button type="button" class="btn btn-primary" id="boton-agregar">Agregar dato</button>
+    <button type="button" class="btn btn-secondary" id="boton-quitar">Quitar dato</button>
 </form>
 
     <div id="formulario-salarios"></div>
     <br>
-    <br>
-    <button id="boton-calcular">Calcular</button>
-    <br>
+    <button class="btn btn-success" id="boton-calcular">Calcular</button>
     <br>
     <ul id="errores"></ul>
     <p id="anual-mayor"></p>
