@@ -26,7 +26,6 @@ let resetear = function(){
     for (let i = 0; i < totalIntegrantes.length; i++){
         totalIntegrantes[i].remove();
     }
-
     let divEdades = document.querySelector("#resultado");
     divEdades.className = 'oculto';
 

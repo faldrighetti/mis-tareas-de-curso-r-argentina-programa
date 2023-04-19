@@ -4,7 +4,9 @@
   "description": "Mis tareas del curso de r/argentina programa",
   "main": "tarea-inputs.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "empezar": "http-server",
+    "cypress-dev": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://github.com/faldrighetti/mis-tareas-de-curso-r-argentina-programa#readme",
   "dependencies": {
-    "bootstrap": "^5.2.3"
+    "bootstrap": "^5.2.3",
+    "cypress": "^12.10.0"
   }
 }
